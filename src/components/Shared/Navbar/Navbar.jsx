@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <div className="w-full bg-[#213644] text-white">
       <div className="navbar max-w-7xl mx-auto py-0">
-        <div className="navbar-start">
+        <div className="">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
@@ -53,10 +53,10 @@ const Navbar = () => {
           </div>
           <img className="w-36" src="/logo-transparent.png" alt="" />
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden lg:flex flex-1">
           <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
-        <div className="navbar-end flex gap-3">
+        <div className="navbar-end flex justify-end gap-3">
           {!!user && (
             <img
               className="w-8 h-8 rounded-full"

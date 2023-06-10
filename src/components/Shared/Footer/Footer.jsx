@@ -15,7 +15,7 @@ const Footer = () => {
           </p>
         </div>
         <div>
-          <span className="footer-title">Social</span>
+          <span className="font-semibold text-1xl text-[#c6ab7c]">Social</span>
           <div className="grid grid-flow-col gap-4">
             <a>
               <svg
@@ -53,7 +53,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <footer className="footer footer-center p-4 bg-[#213644] text-white">
+      <footer className="footer footer-center p-4 bg-[#213644] text-[#c6ab7c]">
         <div>
           <p>Copyright © 2023 - All right reserved by Sporting Life</p>
         </div>
