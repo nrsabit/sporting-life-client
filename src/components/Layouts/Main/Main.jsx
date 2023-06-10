@@ -2,7 +2,7 @@ import React from 'react';
 
 const Main = () => {
     return (
-        <div>
+        <div className='max-w-7xl mx-auto'>
             
         </div>
     );
