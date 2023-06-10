@@ -7,3 +7,18 @@
     color: #c6ab7c;
     color: #747161;
 }
+
+.navbar a{
+    background-color: transparent;
+}
+.navbar a.active{
+    color: #c6ab7c;
+    text-decoration: underline;
+    font-weight: bold;
+}
+.navbar a:hover{
+    background-color: transparent !important;
+    color: #c6ab7c !important;
+    text-decoration: underline;
+    font-weight: bold;
+}
