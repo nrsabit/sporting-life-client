@@ -22,3 +22,7 @@
     text-decoration: underline;
     font-weight: bold;
 }
+.thumbs{
+    display: flex;
+    justify-content: center;
+}

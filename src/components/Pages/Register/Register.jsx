@@ -27,23 +27,35 @@ const Register = () => {
       address: data.address,
       role: "user",
     };
-    signUp(data.email, data.password).then(() => {
-      updateUserProfile(data.name, data.photo).then(() => {
-        axios.post("http://localhost:5000/users", newUser).then((data) => {
-          if (data.data.insertedId) {
-            reset();
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Successfully Registered",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-            navigate("/");
-          }
+    signUp(data.email, data.password)
+      .then(() => {
+        updateUserProfile(data.name, data.photo).then(() => {
+          axios.post("http://localhost:5000/users", newUser).then((data) => {
+            if (data.data.insertedId) {
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Successfully Registered",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
+          });
         });
+      })
+      .catch((error) => {
+        if (error) {
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "User Already Exists",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       });
-    });
   };
 
   const handlePasswordMatch = (event) => {
