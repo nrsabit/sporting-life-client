@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    logOut();
+  };
   const navItems = (
     <>
       {" "}
@@ -64,9 +68,21 @@ const Navbar = () => {
               alt=""
             />
           )}
-          <button className="btn btn-outline btn-sm border-white text-white">
-            Login
-          </button>
+          {user ? (
+            <button
+              onClick={handleLogOut}
+              className="btn btn-outline btn-sm border-white text-white"
+            >
+              Log Out
+            </button>
+          ) : (
+            <button
+              onClick={() => navigate("/login")}
+              className="btn btn-outline btn-sm border-white text-white"
+            >
+              Login
+            </button>
+          )}
         </div>
       </div>
     </div>

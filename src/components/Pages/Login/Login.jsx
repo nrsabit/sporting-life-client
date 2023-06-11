@@ -1,13 +1,18 @@
 import React, { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const [error, setError] = useState();
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [error, setError] = useState(false);
   const { logIn } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+  const url = location?.state?.from?.pathname || "/";
   const {
     register,
     reset,
@@ -16,7 +21,29 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const email = data.email;
+    const password = data.password;
+    logIn(email, password)
+      .then((res) => {
+        setError(false);
+        reset();
+        Swal.fire({
+          title: "Login Successful",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
+        navigate(url, { replace: true });
+      })
+      .catch((error) => setError(true));
+  };
+
+  const handlePasswordToggle = (event) => {
+    event.preventDefault();
+    setPasswordVisible(!passwordVisible);
   };
 
   return (
@@ -37,7 +64,9 @@ const Login = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
               <label className="label">
-                <span className="label-text font-bold">Email</span>
+                <span className="label-text font-bold">
+                  Email<span className="text-red-500">*</span>
+                </span>
               </label>
               <input
                 type="text"
@@ -52,22 +81,32 @@ const Login = () => {
             </div>
             <div className="form-control mb-2">
               <label className="label">
-                <span className="label-text font-bold">Password</span>
+                <span className="label-text font-bold">
+                  Password<span className="text-red-500">*</span>
+                </span>
               </label>
-              <input
-                type="password"
-                placeholder="Type Your Password"
-                {...register("password", { required: true })}
-                name="password"
-                className="input input-bordered"
-              />
+              <div className="join flex w-full">
+                <input
+                  type={passwordVisible ? "text" : "password"}
+                  placeholder="Type Your Password"
+                  {...register("password", { required: true })}
+                  name="password"
+                  className="input flex-grow input-bordered join-item"
+                />
+                <button
+                  className="join-item btn rounded-r-lg bg-base-300"
+                  onClick={handlePasswordToggle}
+                >
+                  {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
               {errors.password?.type === "required" && (
                 <p className="text-red-500 mt-2">Password is required</p>
               )}
             </div>
+            {error && <p className="text-red-500">Wrong Credentials</p>}
             <div className="form-control mt-6">
               <input
-                disabled={error}
                 className="btn btn-primary text-[#c6ab7c] bg-[#213644] border-0"
                 type="submit"
                 value="Login"
