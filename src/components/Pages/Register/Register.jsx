@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import axios from "axios";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Register = () => {
   const [password, setPassword] = useState("");
@@ -229,6 +230,7 @@ const Register = () => {
               <span className="font-bold">Login Now</span>
             </Link>{" "}
           </p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>

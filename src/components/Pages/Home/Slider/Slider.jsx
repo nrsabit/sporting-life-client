@@ -4,7 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 
 const Slider = () => {
   return (
-    <Carousel className="pt-16 md:pt-0">
+    <Carousel className="pt-16">
       <div>
         <img src="https://i.ibb.co/n02Lrw5/football-campaign.png" />
       </div>

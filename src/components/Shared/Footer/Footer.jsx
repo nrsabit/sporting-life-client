@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="w-full bg-[#213644]">
+    <div className="w-full bg-[#213644] mt-16">
       <footer className="footer p-10 text-white max-w-7xl mx-auto">
         <div>
           <img className="w-36" src="/logo-transparent.png" alt="" />

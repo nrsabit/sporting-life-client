@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -119,6 +120,7 @@ const Login = () => {
               <span className="font-bold">Create a New Account</span>
             </Link>{" "}
           </p>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>
