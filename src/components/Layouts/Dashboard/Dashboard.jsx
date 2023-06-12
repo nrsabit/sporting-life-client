@@ -15,14 +15,14 @@ const Dashboard = () => {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center">
+      <div className="drawer-content bg-base-300 flex flex-col items-center justify-center">
         {/* Page content here */}
         <Outlet></Outlet>
         <label
           htmlFor="my-drawer-2"
-          className="btn btn-primary drawer-button lg:hidden"
+          className="btn btn-sm bg-[#213644] text-[#c6ab7c]  drawer-button lg:hidden"
         >
-          Open drawer
+          Open Menu
         </label>
       </div>
       <div className="drawer-side">

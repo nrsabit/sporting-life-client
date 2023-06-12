@@ -169,7 +169,7 @@ const AddClass = () => {
           </div>
           <div className="form-control mt-6">
             <input
-              className="btn btn-primary text-[#c6ab7c] bg-[#213644] border-0"
+              className="btn btn-primary text-[#c6ab7c] bg-[#213644] hover:bg-[#747161] border-0"
               type="submit"
               value="Add Class"
             />
