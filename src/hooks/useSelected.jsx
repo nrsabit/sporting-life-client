@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 
 const useSelected = () => {
   const { user, loading } = useContext(AuthContext);
-  const [axiosSecure] = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
 
   const { data: selectedClass = [], refetch } = useQuery({
     queryKey: ["selected", user?.email],
