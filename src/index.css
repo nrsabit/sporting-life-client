@@ -11,12 +11,12 @@
 .navbar a{
     background-color: transparent;
 }
-.navbar a.active{
+.navbar a.active, .menu a.active{
     color: #c6ab7c;
     text-decoration: underline;
     font-weight: bold;
 }
-.navbar a:hover{
+.navbar a:hover, .menu a:hover{
     background-color: transparent !important;
     color: #c6ab7c !important;
     text-decoration: underline;

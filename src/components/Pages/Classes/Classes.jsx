@@ -12,9 +12,8 @@ const Classes = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const [isAdmin] = useAdmin();
-  const [isInstructor] = useInstructor();
-  // TODO: isAdmin and isInstructor must be varified via api calls and jwt
+  const [isAdmin] = useAdmin()
+  const [isInstructor] = useInstructor()
 
   useEffect(() => {
     axios
@@ -98,7 +97,7 @@ const Classes = () => {
               <button
                 onClick={() => handleSelectClass(classItem)}
                 disabled={
-                  user && isAdmin || user && isInstructor || classItem.availableSeats === 0
+                  isAdmin || isInstructor || classItem.availableSeats === 0
                     ? true
                     : false
                 }
