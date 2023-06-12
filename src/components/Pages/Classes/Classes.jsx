@@ -4,14 +4,16 @@ import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 const Classes = () => {
   const [classes, setClasses] = useState([]);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const isAdmin = false;
-  const isInstructor = false;
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   // TODO: isAdmin and isInstructor must be varified via api calls and jwt
 
   useEffect(() => {
@@ -29,7 +31,7 @@ const Classes = () => {
         instructorName: classItem.instructorName,
         instructorEmail: classItem.instructorEmail,
         email: user.email,
-        price: classItem.price
+        price: classItem.price,
       };
       axios
         .post("http://localhost:5000/select-class", selectedClass)
@@ -55,7 +57,7 @@ const Classes = () => {
         confirmButtonText: "Yes, Login",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/login", {state: {from: location}});
+          navigate("/login", { state: { from: location } });
         }
       });
     }
@@ -96,7 +98,7 @@ const Classes = () => {
               <button
                 onClick={() => handleSelectClass(classItem)}
                 disabled={
-                  isAdmin || isInstructor || classItem.availableSeats === 0
+                  user && isAdmin || user && isInstructor || classItem.availableSeats === 0
                     ? true
                     : false
                 }
