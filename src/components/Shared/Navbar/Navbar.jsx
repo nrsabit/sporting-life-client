@@ -64,7 +64,7 @@ const Navbar = () => {
           {!!user && (
             <img
               className="w-8 h-8 rounded-full"
-              src="https://i.ibb.co/0cNRWMB/pexels-ofarias-g-17047231.jpg"
+              src={user?.photoURL ? user?.photoURL : "https://i.ibb.co/ZHZVSRr/profile-user.png"}
               alt=""
             />
           )}
