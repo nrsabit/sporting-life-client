@@ -2,6 +2,7 @@ import React from "react";
 import useSelected from "../../../hooks/useSelected";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const SelectedClasses = () => {
   const [SelectedClass = [], refetch] = useSelected();
@@ -40,6 +41,9 @@ const SelectedClasses = () => {
 
   return (
     <div className="p-8">
+      <Helmet>
+        <title>Sporting Life | Selected Classes</title>
+      </Helmet>
       <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
         My Selected Classes
       </h2>
