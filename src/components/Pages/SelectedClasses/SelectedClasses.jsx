@@ -3,11 +3,11 @@ import useSelected from "../../../hooks/useSelected";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 
 const SelectedClasses = () => {
   const [SelectedClass = [], refetch] = useSelected();
 
-  const handlePayment = (classItem) => {};
   const handleDeleteClass = (classItem) => {
     Swal.fire({
       title: "Are you sure?",
@@ -66,12 +66,11 @@ const SelectedClasses = () => {
                 Price: <span className="font-normal">${classItem.price}</span>
               </p>
               <div className="flex justify-between items-center mt-2">
-                <button
-                  onClick={() => handlePayment(classItem)}
-                  className="btn btn-sm bg-[#213644] text-[#c6ab7c]"
-                >
-                  Pay
-                </button>
+                <Link to={`/dashboard/payment/${classItem._id}`}>
+                  <button className="btn btn-sm bg-[#213644] text-[#c6ab7c]">
+                    Pay
+                  </button>
+                </Link>
                 <button
                   onClick={() => handleDeleteClass(classItem)}
                   className="btn btn-sm bg-red-500 text-white"
