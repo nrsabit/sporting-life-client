@@ -4,9 +4,21 @@ import { Helmet } from "react-helmet-async";
 import MyClassCard from "./MyClassCard";
 
 const MyClasses = () => {
-  const [myAllClasses, refetch] = useMyClasses();
+  const [myAllClasses, refetch, isLoading] = useMyClasses();
 
-  if (myAllClasses.length === 0) {
+  if (isLoading) {
+    return (
+      <div className="min-h-screen">
+        <img
+          className="mx-auto"
+          src="https://i.ibb.co/GFy0712/loading.gif"
+          alt=""
+        />
+      </div>
+    );
+  }
+
+  if (myAllClasses.length === 0 && !isLoading) {
     return (
       <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
         No Classes Found

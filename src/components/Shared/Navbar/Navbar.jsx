@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+
   const handleLogOut = () => {
     logOut();
   };
@@ -20,9 +25,19 @@ const Navbar = () => {
       <li>
         <NavLink to="/classes">Classes</NavLink>
       </li>
-      {!!user && (
+      {!!user && isAdmin && (
         <li>
-          <NavLink to="/dashboard">Dashboard</NavLink>
+          <NavLink to="/dashboard/manage-classes">Dashboard</NavLink>
+        </li>
+      )}
+      {!!user && isInstructor && (
+        <li>
+          <NavLink to="/dashboard/my-classes">Dashboard</NavLink>
+        </li>
+      )}
+      {!!user && !isAdmin && !isInstructor && (
+        <li>
+          <NavLink to="/dashboard/selected-classes">Dashboard</NavLink>
         </li>
       )}
     </>
@@ -62,11 +77,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end flex justify-end gap-3">
           {!!user && (
-            <img
-              className="w-8 h-8 rounded-full"
-              src={user?.photoURL ? user?.photoURL : "https://i.ibb.co/ZHZVSRr/profile-user.png"}
-              alt=""
-            />
+            <img className="w-8 h-8 rounded-full" src={user.photoURL} alt="" />
           )}
           {user ? (
             <button

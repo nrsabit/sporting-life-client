@@ -7,7 +7,7 @@ const useMyClasses = () => {
   const { user, loading } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
 
-  const { data: myAllClasses = [], refetch } = useQuery({
+  const { data: myAllClasses = [], refetch , isLoading} = useQuery({
     queryKey: ["my-classes", user?.email],
     queryFn: async () => {
       if (!loading && user?.email) {
@@ -17,7 +17,7 @@ const useMyClasses = () => {
     },
     enabled: !loading && !!user?.email,
   });
-  return [myAllClasses, refetch];
+  return [myAllClasses, refetch, isLoading];
 };
 
 export default useMyClasses;
