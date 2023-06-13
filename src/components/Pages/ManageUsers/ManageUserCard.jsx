@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 
 const ManageUserCard = ({ user, refetch }) => {
   const { image, name, role, email, _id } = user;
@@ -17,24 +18,21 @@ const ManageUserCard = ({ user, refetch }) => {
       confirmButtonText: "Yes, Update it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure
-          .patch(`/update-user/${_id}?role=${role}`)
-          .then((data) => {
-            if (data.data.modifiedCount > 0) {
-              Swal.fire(
-                "Updated!",
-                "User Role Updated Successfully",
-                "success"
-              );
-              refetch();
-            }
-          });
+        axiosSecure.patch(`/update-user/${_id}?role=${role}`).then((data) => {
+          if (data.data.modifiedCount > 0) {
+            Swal.fire("Updated!", "User Role Updated Successfully", "success");
+            refetch();
+          }
+        });
       }
     });
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ y: 200 }}
+      animate={{ y: 0 }}
+      transition={{ ease: "easeOut", duration: 2 }}
       className={`rounded p-4 shadow-lg mb-6 md:flex gap-4  bg-base-100`}
     >
       <div className="flex flex-col justify-center items-center md:w-1/3">
@@ -65,7 +63,7 @@ const ManageUserCard = ({ user, refetch }) => {
           Make Instructor
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

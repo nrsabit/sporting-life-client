@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const PopularInstructor = () => {
   const [instructors, setInstructors] = useState([]);
@@ -19,7 +20,10 @@ const PopularInstructor = () => {
       </div>
       <div className="md:w-4/5 grid grid-cols-1 md:grid-cols-3 gap-8">
         {instructors?.map((Instructor) => (
-          <div
+          <motion.div
+            initial={{ y: 100, scale: 0.8 }}
+            animate={{ y: 0, scale: 1 }}
+            transition={{ ease: "easeOut", duration: 2 }}
             key={Instructor._id}
             className="card card-compact w-full bg-base-100 shadow-xl"
           >
@@ -30,7 +34,7 @@ const PopularInstructor = () => {
               <h2 className="card-title">{Instructor.name}</h2>
               <p>Number of Classes: {Instructor.numberOfClasses}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

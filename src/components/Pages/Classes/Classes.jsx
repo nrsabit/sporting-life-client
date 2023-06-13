@@ -6,14 +6,15 @@ import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAdmin from "../../../hooks/useAdmin";
 import useInstructor from "../../../hooks/useInstructor";
+import { motion } from "framer-motion";
 
 const Classes = () => {
   const [classes, setClasses] = useState([]);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const [isAdmin] = useAdmin()
-  const [isInstructor] = useInstructor()
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   useEffect(() => {
     axios
@@ -67,12 +68,13 @@ const Classes = () => {
       <Helmet>
         <title>Sporting Life | Classes</title>
       </Helmet>
-      <h2 className="text-4xl font-bold  text-center my-10">
-        Classes
-      </h2>
+      <h2 className="text-4xl font-bold  text-center my-10">Classes</h2>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {classes?.map((classItem) => (
-          <div
+          <motion.div
+            initial={{ y: 100, scale: 0.8 }}
+            animate={{ y: 0, scale: 1 }}
+            transition={{ ease: "easeOut", duration: 2 }}
             key={classItem._id}
             className={`card card-compact w-full shadow-xl ${
               classItem.availableSeats === 0 ? "bg-red-400" : "bg-base-100"
@@ -106,7 +108,7 @@ const Classes = () => {
                 Select
               </button>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { motion } from "framer-motion";
 
 const Instructors = () => {
   const [instructors, setInstructors] = useState([]);
@@ -15,12 +16,13 @@ const Instructors = () => {
       <Helmet>
         <title>Sporting Life | Instructors</title>
       </Helmet>
-      <h2 className="text-4xl font-bold  text-center my-10">
-        Instructors
-      </h2>
+      <h2 className="text-4xl font-bold  text-center my-10">Instructors</h2>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {instructors?.map((instructor) => (
-          <div
+          <motion.div
+            initial={{ y: 100, scale: 0.8 }}
+            animate={{ y: 0, scale: 1 }}
+            transition={{ ease: "easeOut", duration: 2 }}
             key={instructor._id}
             className="card card-compact w-full bg-base-100 shadow-xl"
           >
@@ -39,7 +41,7 @@ const Instructors = () => {
                 </span>
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

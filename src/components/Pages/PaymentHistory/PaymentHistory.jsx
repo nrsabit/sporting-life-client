@@ -3,6 +3,7 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
 import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 
 const PaymentHistory = () => {
   const { user, loading } = useContext(AuthContext);
@@ -27,21 +28,28 @@ const PaymentHistory = () => {
     return `${formattedDate} ${formattedTime}`;
   }
 
-  const { data: payments = [] , isLoading} = useQuery(["payments"], async () => {
-    if (!loading && user?.email) {
-      const res = await axiosSecure.get(`/payments?email=${user?.email}`);
-      return res.data;
+  const { data: payments = [], isLoading } = useQuery(
+    ["payments"],
+    async () => {
+      if (!loading && user?.email) {
+        const res = await axiosSecure.get(`/payments?email=${user?.email}`);
+        return res.data;
+      }
     }
-  });
+  );
 
   if (isLoading) {
     return (
       <div className="min-h-screen">
-        <img className="mx-auto" src="https://i.ibb.co/GFy0712/loading.gif" alt="" />
+        <img
+          className="mx-auto"
+          src="https://i.ibb.co/GFy0712/loading.gif"
+          alt=""
+        />
       </div>
     );
   }
-  
+
   if (payments.length === 0 && !isLoading) {
     return (
       <h2 className="text-4xl font-bold  text-center my-10">
@@ -55,12 +63,13 @@ const PaymentHistory = () => {
       <Helmet>
         <title>Sporting Life | Payment History</title>
       </Helmet>
-      <h2 className="text-4xl font-bold  text-center my-10">
-        My Payments
-      </h2>
+      <h2 className="text-4xl font-bold  text-center my-10">My Payments</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {payments.map((payment) => (
-          <div
+          <motion.div
+            initial={{ y: 100 }}
+            animate={{ y: 0 }}
+            transition={{ ease: "easeOut", duration: 2 }}
             key={payment._id}
             className={`card card-compact w-full shadow-xl bg-base-100`}
           >
@@ -85,7 +94,7 @@ const PaymentHistory = () => {
                 </span>
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

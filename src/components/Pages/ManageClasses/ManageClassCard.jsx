@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
+
 const ManageClassCard = ({ classItem, refetch }) => {
   const {
     image,
@@ -47,7 +49,7 @@ const ManageClassCard = ({ classItem, refetch }) => {
     if (feedbackRef.current.value === "") {
       return;
     }
-    console.log(feedbackRef.current.value)
+    console.log(feedbackRef.current.value);
     axiosSecure
       .patch(`/update-feedback/${_id}`, {
         feedback: feedbackRef.current.value,
@@ -56,13 +58,16 @@ const ManageClassCard = ({ classItem, refetch }) => {
         if (data.data.modifiedCount > 0) {
           Swal.fire("Updated!", "Feedback Sent ", "success");
           refetch();
-          feedbackRef.current.value = ''
+          feedbackRef.current.value = "";
         }
       });
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ y: 100, rotate: -20 }}
+      animate={{ y: 0, rotate: 0 }}
+      transition={{ ease: "easeOut", duration: 2 }}
       className={`rounded custom-bg p-4 shadow-lg mb-6 md:flex gap-4  ${
         (status === "approved" && "bg-green-400") ||
         (status === "pending" && "bg-yellow-400") ||
@@ -144,7 +149,7 @@ const ManageClassCard = ({ classItem, refetch }) => {
           Deny
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

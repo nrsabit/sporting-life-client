@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const MyClassCard = ({ classItem }) => {
   const {
@@ -11,7 +12,10 @@ const MyClassCard = ({ classItem }) => {
     price,
   } = classItem;
   return (
-    <div
+    <motion.div
+      initial={{ y: 100, rotate: -20 }}
+      animate={{ y: 0, rotate: 0 }}
+      transition={{ ease: "easeOut", duration: 2 }}
       className={`rounded custom-bg p-4 shadow-lg mb-6 md:flex gap-4  ${
         (status === "approved" && "bg-green-400") ||
         (status === "pending" && "bg-yellow-400") ||
@@ -47,7 +51,7 @@ const MyClassCard = ({ classItem }) => {
           Update
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

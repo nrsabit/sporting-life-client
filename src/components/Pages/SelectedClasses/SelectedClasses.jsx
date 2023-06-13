@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const SelectedClasses = () => {
   const [SelectedClass = [], refetch, isLoading] = useSelected();
@@ -61,7 +62,10 @@ const SelectedClasses = () => {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {SelectedClass.map((classItem) => (
-          <div
+          <motion.div
+            initial={{ y: 100, rotate: 20 }}
+            animate={{ y: 0, rotate: 0 }}
+            transition={{ ease: "easeOut", duration: 2 }}
             key={classItem._id}
             className={`card card-compact w-full shadow-xl bg-base-100`}
           >
@@ -91,7 +95,7 @@ const SelectedClasses = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>
