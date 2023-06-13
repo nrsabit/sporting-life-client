@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 
 const SelectedClasses = () => {
-  const [SelectedClass = [], refetch] = useSelected();
+  const [SelectedClass = [], refetch, isLoading] = useSelected();
 
   const handleDeleteClass = (classItem) => {
     Swal.fire({
@@ -31,7 +31,19 @@ const SelectedClasses = () => {
     });
   };
 
-  if (SelectedClass.length === 0) {
+  if (isLoading) {
+    return (
+      <div className="min-h-screen">
+        <img
+          className="mx-auto"
+          src="https://i.ibb.co/GFy0712/loading.gif"
+          alt=""
+        />
+      </div>
+    );
+  }
+
+  if (SelectedClass.length === 0 && !isLoading) {
     return (
       <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
         No Selected Classes Found

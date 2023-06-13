@@ -8,13 +8,22 @@ const EnrolledClasses = () => {
   const { user, loading } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
 
-  const { data: enrolledClasses = [] } = useQuery(["enrolled"], async () => {
+  const { data: enrolledClasses = [], isLoading } = useQuery(["enrolled"], async () => {
     if (!loading && user?.email) {
       const res = await axiosSecure.get(`/enrolled?email=${user?.email}`);
       return res.data;
     }
   });
-  if (enrolledClasses.length === 0) {
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen">
+        <img className="mx-auto" src="https://i.ibb.co/GFy0712/loading.gif" alt="" />
+      </div>
+    );
+  }
+
+  if (enrolledClasses.length === 0 && ! isLoading) {
     return (
       <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
         No Enrolled Classes Found

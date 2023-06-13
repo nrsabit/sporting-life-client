@@ -7,7 +7,7 @@ const useSelected = () => {
   const { user, loading } = useContext(AuthContext);
   const axiosSecure = useAxiosSecure();
 
-  const { data: selectedClass = [], refetch } = useQuery({
+  const { data: selectedClass = [], refetch, isLoading } = useQuery({
     queryKey: ["selected", user?.email],
     queryFn: async () => {
       if (!loading && user?.email) {
@@ -17,7 +17,7 @@ const useSelected = () => {
     },
     enabled: !loading && !!user?.email,
   });
-  return [selectedClass, refetch];
+  return [selectedClass, refetch, isLoading];
 };
 
 export default useSelected;
