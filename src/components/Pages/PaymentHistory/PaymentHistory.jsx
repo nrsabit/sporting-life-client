@@ -44,7 +44,7 @@ const PaymentHistory = () => {
   
   if (payments.length === 0 && !isLoading) {
     return (
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         No Payments Found
       </h2>
     );
@@ -55,7 +55,7 @@ const PaymentHistory = () => {
       <Helmet>
         <title>Sporting Life | Payment History</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         My Payments
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -65,20 +65,20 @@ const PaymentHistory = () => {
             className={`card card-compact w-full shadow-xl bg-base-100`}
           >
             <div className="card-body">
-              <p className="text-[#213644] font-bold">
+              <p className=" font-bold">
                 Trans id:{" "}
                 <span className="font-normal text-green-500">
                   {payment.transactionId}
                 </span>
               </p>
-              <p className="text-[#213644] font-bold">
+              <p className=" font-bold">
                 Price: <span className="font-normal">${payment.price}</span>
               </p>
-              <p className="text-[#213644] font-bold">
+              <p className=" font-bold">
                 Purchashed Class:{" "}
                 <span className="font-normal">{payment.className}</span>
               </p>
-              <p className="text-[#213644] font-bold">
+              <p className=" font-bold">
                 Date:{" "}
                 <span className="font-normal">
                   {formatDate(new Date(payment.date))}

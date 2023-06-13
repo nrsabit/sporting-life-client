@@ -20,7 +20,7 @@ const MyClasses = () => {
 
   if (myAllClasses.length === 0 && !isLoading) {
     return (
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         No Classes Found
       </h2>
     );
@@ -31,7 +31,7 @@ const MyClasses = () => {
       <Helmet>
         <title>Sporting Life | My Classes</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         My Classes
       </h2>
       {myAllClasses.map((classItem) => (

@@ -20,7 +20,7 @@ const Payment = () => {
       <Helmet>
         <title>Sporting Life | Pay Now</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         Pay Now
       </h2>
       <Elements stripe={stripePromise}>

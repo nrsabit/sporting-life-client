@@ -15,7 +15,7 @@ const Instructors = () => {
       <Helmet>
         <title>Sporting Life | Instructors</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         Instructors
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -28,11 +28,11 @@ const Instructors = () => {
               <img src={instructor.image} alt="Instructor" className="h-48" />
             </figure>
             <div className="card-body">
-              <h2 className="card-title text-[#213644]">{instructor.name}</h2>
-              <p className="text-[#213644] font-bold">
+              <h2 className="card-title ">{instructor.name}</h2>
+              <p className=" font-bold">
                 Email: <span className="font-normal">{instructor.email}</span>
               </p>
-              <p className="text-[#213644] font-bold">
+              <p className=" font-bold">
                 Number of Classes:{" "}
                 <span className="font-normal">
                   {instructor.numberOfClasses}

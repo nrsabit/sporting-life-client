@@ -35,7 +35,7 @@ const ManageUserCard = ({ user, refetch }) => {
 
   return (
     <div
-      className={`rounded p-4 shadow-lg mb-6 md:flex gap-4 text-[#213644] bg-base-100`}
+      className={`rounded p-4 shadow-lg mb-6 md:flex gap-4  bg-base-100`}
     >
       <div className="flex flex-col justify-center items-center md:w-1/3">
         <img className="w-40 h-40 rounded-full" src={image} alt="" />

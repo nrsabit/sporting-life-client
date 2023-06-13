@@ -34,7 +34,7 @@ const ManageUsers = () => {
 
   if (allUsers.length === 0 && !isLoading) {
     return (
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         No Users Found
       </h2>
     );
@@ -44,7 +44,7 @@ const ManageUsers = () => {
       <Helmet>
         <title>Sporting Life | Manage Users</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         Manage Users
       </h2>
       {allUsers.map((user) => (

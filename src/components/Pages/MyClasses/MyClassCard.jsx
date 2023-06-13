@@ -12,7 +12,7 @@ const MyClassCard = ({ classItem }) => {
   } = classItem;
   return (
     <div
-      className={`rounded p-4 shadow-lg mb-6 md:flex gap-4 text-[#213644] ${
+      className={`rounded custom-bg p-4 shadow-lg mb-6 md:flex gap-4  ${
         (status === "approved" && "bg-green-400") ||
         (status === "pending" && "bg-yellow-400") ||
         (status === "denied" && "bg-red-400")
@@ -23,17 +23,17 @@ const MyClassCard = ({ classItem }) => {
       </div>
       <div className="flex flex-col justify-center items-center my-4 md:my-0 md:w-1/3">
         <h3 className="text-2xl font-semibold text-center">{name}</h3>
-        <p className="text-[#213644] font-bold">
+        <p className=" font-bold">
           Status: <span className="font-normal">{status}</span>
         </p>
-        <p className="text-[#213644] font-bold">
+        <p className=" font-bold">
           Enrolled Students:{" "}
           <span className="font-normal">{numberOfStudents}</span>
         </p>
-        <p className="text-[#213644] font-bold">
+        <p className=" font-bold">
           Available Seats: <span className="font-normal">{availableSeats}</span>
         </p>
-        <p className="text-[#213644] font-bold">
+        <p className=" font-bold">
           Price: <span className="font-normal">${price}</span>
         </p>
       </div>

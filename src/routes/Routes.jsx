@@ -17,6 +17,7 @@ import SelectedClasses from "../components/Pages/SelectedClasses/SelectedClasses
 import EnrolledClasses from "../components/Pages/EnrolledClasses/EnrolledClasses";
 import PaymentHistory from "../components/Pages/PaymentHistory/PaymentHistory";
 import Payment from "../components/Pages/Payment/Payment";
+import NotFound from "../components/Pages/NotFound/NotFound";
 
 const router = createBrowserRouter([
   {
@@ -108,6 +109,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "*",
+    element: <NotFound></NotFound>
+  }
 ]);
 
 export default router;

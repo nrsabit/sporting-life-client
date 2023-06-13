@@ -58,7 +58,7 @@ const AddClass = () => {
 
   return (
     <div className="w-full">
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         Add a Class
       </h2>
       <div className="w-full md:w-3/5 mx-auto p-6">

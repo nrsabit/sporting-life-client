@@ -45,7 +45,7 @@ const SelectedClasses = () => {
 
   if (SelectedClass.length === 0 && !isLoading) {
     return (
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         No Selected Classes Found
       </h2>
     );
@@ -56,7 +56,7 @@ const SelectedClasses = () => {
       <Helmet>
         <title>Sporting Life | Selected Classes</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         My Selected Classes
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -69,12 +69,12 @@ const SelectedClasses = () => {
               <img src={classItem.image} alt="Instructor" className="h-48" />
             </figure>
             <div className="card-body">
-              <h2 className="card-title text-[#213644]">{classItem.name}</h2>
-              <p className="text-[#213644] font-bold">
+              <h2 className="card-title ">{classItem.name}</h2>
+              <p className=" font-bold">
                 Instructor:{" "}
                 <span className="font-normal">{classItem.instructorName}</span>
               </p>
-              <p className="text-[#213644] font-bold">
+              <p className=" font-bold">
                 Price: <span className="font-normal">${classItem.price}</span>
               </p>
               <div className="flex justify-between items-center mt-2">

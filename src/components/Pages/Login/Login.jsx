@@ -114,7 +114,7 @@ const Login = () => {
               />
             </div>
           </form>
-          <p className="text-center text-[#213644] mt-4">
+          <p className="text-center  mt-4">
             New here?{" "}
             <Link to="/register">
               <span className="font-bold">Create a New Account</span>

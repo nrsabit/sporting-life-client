@@ -25,7 +25,7 @@ const EnrolledClasses = () => {
 
   if (enrolledClasses.length === 0 && ! isLoading) {
     return (
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         No Enrolled Classes Found
       </h2>
     );
@@ -36,7 +36,7 @@ const EnrolledClasses = () => {
       <Helmet>
         <title>Sporting Life | Enrolled Classes</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         My Enrolled Classes
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -49,15 +49,15 @@ const EnrolledClasses = () => {
               <img src={classItem.image} alt="Instructor" className="h-48" />
             </figure>
             <div className="card-body">
-              <h2 className="card-title text-[#213644]">{classItem.name}</h2>
-              <p className="text-[#213644] font-bold">
+              <h2 className="card-title ">{classItem.name}</h2>
+              <p className=" font-bold">
                 Instructor:{" "}
                 <span className="font-normal">{classItem.instructorName}</span>
               </p>
-              <p className="text-[#213644] font-bold">
+              <p className=" font-bold">
                 Price: <span className="font-normal">${classItem.price}</span>
               </p>
-              <p className="text-[#213644] font-bold">
+              <p className=" font-bold">
                 Status: <span className="font-normal text-green-500">{classItem.status}</span>
               </p>
             </div>

@@ -29,3 +29,15 @@
 .btn:hover{
     background-color: #747161;
 }
+[data-theme=light]{
+    color: #213644;
+}
+[data-theme=dark]{
+    color: #c6ab7c;
+}
+[data-theme=dark] .custom-bg h3{
+    color: #213644 !important;
+}
+[data-theme=dark] .custom-bg p{
+    color: #213644 !important;
+}

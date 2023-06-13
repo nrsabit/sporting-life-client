@@ -13,7 +13,7 @@ const PopularInstructor = () => {
   return (
     <div className="max-w-7xl mx-auto py-16 md:flex">
       <div className="flex justify-center items-center md:w-1/5">
-        <h2 className="text-3xl font-semibold text-[#213644] text-center">
+        <h2 className="text-3xl mb-8 md:mb-0 font-semibold  text-center">
           Popular Instructors
         </h2>
       </div>

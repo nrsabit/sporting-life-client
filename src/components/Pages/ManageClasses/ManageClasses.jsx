@@ -34,7 +34,7 @@ const ManageClasses = () => {
 
   if (allClasses.length === 0 && !isLoading) {
     return (
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         No Enrolled Classes Found
       </h2>
     );
@@ -44,7 +44,7 @@ const ManageClasses = () => {
       <Helmet>
         <title>Sporting Life | Manage Classes</title>
       </Helmet>
-      <h2 className="text-4xl font-bold text-[#213644] text-center my-10">
+      <h2 className="text-4xl font-bold  text-center my-10">
         Manage Classes
       </h2>
       {allClasses.map((classItem) => (

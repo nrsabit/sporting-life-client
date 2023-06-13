@@ -224,7 +224,7 @@ const Register = () => {
               />
             </div>
           </form>
-          <p className="text-center text-[#213644] mt-4">
+          <p className="text-center  mt-4">
             Already Have an Account?{" "}
             <Link to="/login">
               <span className="font-bold">Login Now</span>

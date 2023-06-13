@@ -63,7 +63,7 @@ const ManageClassCard = ({ classItem, refetch }) => {
 
   return (
     <div
-      className={`rounded p-4 shadow-lg mb-6 md:flex gap-4 text-[#213644] ${
+      className={`rounded custom-bg p-4 shadow-lg mb-6 md:flex gap-4  ${
         (status === "approved" && "bg-green-400") ||
         (status === "pending" && "bg-yellow-400") ||
         (status === "denied" && "bg-red-400")
