@@ -3,6 +3,7 @@ import Slider from "../Slider/Slider";
 import PopularInstructor from "../PopularInstructor/PopularInstructor";
 import PopularClasses from "../PopularClasses/PopularClasses";
 import { Helmet } from "react-helmet-async";
+import EnjoyLife from "./EnjoyLife/EnjoyLife";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Slider></Slider>
       <PopularInstructor></PopularInstructor>
       <PopularClasses></PopularClasses>
+      <EnjoyLife></EnjoyLife>
     </div>
   );
 };
