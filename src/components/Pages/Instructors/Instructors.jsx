@@ -8,7 +8,7 @@ const Instructors = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/instructors")
+      .get("https://sporting-life-server.vercel.app/instructors")
       .then((data) => setInstructors(data.data));
   }, []);
   return (

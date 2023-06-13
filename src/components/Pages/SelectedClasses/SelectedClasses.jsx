@@ -21,7 +21,7 @@ const SelectedClasses = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/selected/${classItem._id}`)
+          .delete(`https://sporting-life-server.vercel.app/selected/${classItem._id}`)
           .then((data) => {
             if (data.data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your Class has been deleted.", "success");

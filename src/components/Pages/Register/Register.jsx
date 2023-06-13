@@ -31,7 +31,7 @@ const Register = () => {
     signUp(data.email, data.password)
       .then(() => {
         updateUserProfile(data.name, data.photo).then(() => {
-          axios.post("http://localhost:5000/users", newUser).then((data) => {
+          axios.post("https://sporting-life-server.vercel.app/users", newUser).then((data) => {
             if (data.data.insertedId) {
               reset();
               Swal.fire({

@@ -7,7 +7,7 @@ const PopularClasses = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/classes?top=true")
+      .get("https://sporting-life-server.vercel.app/classes?top=true")
       .then((data) => setClasses(data.data));
   }, []);
 

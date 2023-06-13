@@ -7,7 +7,7 @@ const PopularInstructor = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/instructors?limit=true")
+      .get("https://sporting-life-server.vercel.app/instructors?limit=true")
       .then((data) => setInstructors(data.data));
   }, []);
 

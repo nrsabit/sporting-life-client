@@ -19,7 +19,7 @@ const SocialLogin = () => {
         image: data.user.photoURL,
         role: "user",
       };
-      axios.post("http://localhost:5000/users", loggedInUser)
+      axios.post("https://sporting-life-server.vercel.app/users", loggedInUser)
         .then((data) => {
           if (data.data.insertedId) {
             Swal.fire({

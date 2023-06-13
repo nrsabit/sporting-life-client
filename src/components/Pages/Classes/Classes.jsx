@@ -18,7 +18,7 @@ const Classes = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/classes")
+      .get("https://sporting-life-server.vercel.app/classes")
       .then((data) => setClasses(data.data));
   }, []);
 
@@ -34,7 +34,7 @@ const Classes = () => {
         price: classItem.price,
       };
       axios
-        .post("http://localhost:5000/select-class", selectedClass)
+        .post("https://sporting-life-server.vercel.app/select-class", selectedClass)
         .then((data) => {
           if (data.data.insertedId) {
             Swal.fire({
