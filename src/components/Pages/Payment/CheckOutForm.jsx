@@ -73,6 +73,7 @@ const CheckOutForm = ({ selectedItem }) => {
         className: selectedItem.name,
         price: selectedItem.price,
         instructorName: selectedItem.instructorName,
+        date: new Date()
       };
       axiosSecure.post("/payment", paymentInfo).then((res) => {
         if (res.data.insertedId) {
@@ -92,6 +93,7 @@ const CheckOutForm = ({ selectedItem }) => {
             className,
             instructorEmail: selectedItem.instructorEmail,
             classId: selectedItem.classId,
+            image: selectedItem.image 
           };
           axiosSecure.post("/enrolled", enrolledClass).then((data) => {
             if (data.data.insertedId) {
