@@ -28,6 +28,7 @@ const useAxiosSecure = () => {
         ) {
           await logOut();
           navigate("/login");
+          console.log("from axiosSecure logout area");
         }
         return Promise.reject(error);
       }

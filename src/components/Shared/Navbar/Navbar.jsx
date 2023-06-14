@@ -1,14 +1,12 @@
 import React, { useContext, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
-import useAdmin from "../../../hooks/useAdmin";
-import useInstructor from "../../../hooks/useInstructor";
+import useSingleUser from "../../../hooks/useSingleUser";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [isAdmin] = useAdmin();
-  const [isInstructor] = useInstructor();
+  const [loggedUser] = useSingleUser();
 
   const handleLogOut = () => {
     logOut();
@@ -45,21 +43,23 @@ const Navbar = () => {
       <li>
         <NavLink to="/classes">Classes</NavLink>
       </li>
-      {!!user && isAdmin && (
+      {!!user && loggedUser?.role === "admin" && (
         <li>
           <NavLink to="/dashboard/manage-classes">Dashboard</NavLink>
         </li>
       )}
-      {!!user && isInstructor && (
+      {!!user && loggedUser?.role === "instructor" && (
         <li>
           <NavLink to="/dashboard/my-classes">Dashboard</NavLink>
         </li>
       )}
-      {!!user && !isAdmin && !isInstructor && (
-        <li>
-          <NavLink to="/dashboard/selected-classes">Dashboard</NavLink>
-        </li>
-      )}
+      {!!user &&
+        loggedUser?.role !== "admin" &&
+        loggedUser?.role !== "instructor" && (
+          <li>
+            <NavLink to="/dashboard/selected-classes">Dashboard</NavLink>
+          </li>
+        )}
     </>
   );
   return (

@@ -8,10 +8,10 @@ import useInstructor from "../../../hooks/useInstructor";
 import { MdManageAccounts, MdBookmarkAdded, MdPayments } from "react-icons/md";
 import { FaUsersCog } from "react-icons/fa";
 import { BiSelectMultiple } from "react-icons/bi";
+import useSingleUser from "../../../hooks/useSingleUser";
 
 const Dashboard = () => {
-  const [isAdmin] = useAdmin();
-  const [isInstructor] = useInstructor();
+  const [loggedUser] = useSingleUser();
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -30,7 +30,7 @@ const Dashboard = () => {
         <ul className="menu p-4 w-80 h-full bg-[#213644] text-white">
           <img className="mt-8 w-40 mb-12" src="/logo-transparent.png" alt="" />
           {/* Sidebar content here */}
-          {isAdmin && (
+          {loggedUser?.role === "admin" && (
             <>
               <li className="uppercase">
                 <NavLink to="/dashboard/manage-classes">
@@ -44,7 +44,7 @@ const Dashboard = () => {
               </li>
             </>
           )}
-          {isInstructor && (
+          {loggedUser?.role === "instructor" && (
             <>
               <li className="uppercase">
                 <NavLink to="/dashboard/my-classes">
@@ -58,25 +58,26 @@ const Dashboard = () => {
               </li>
             </>
           )}
-          {!isInstructor && !isAdmin && (
-            <>
-              <li className="uppercase">
-                <NavLink to="/dashboard/selected-classes">
-                  <MdBookmarkAdded></MdBookmarkAdded>Selected Classes
-                </NavLink>
-              </li>
-              <li className="uppercase">
-                <NavLink to="/dashboard/enrolled-classes">
-                  <BiSelectMultiple></BiSelectMultiple>Enrolled Classes
-                </NavLink>
-              </li>
-              <li className="uppercase">
-                <NavLink to="/dashboard/payment-history">
-                  <MdPayments></MdPayments>Payment History
-                </NavLink>
-              </li>
-            </>
-          )}
+          {loggedUser?.role !== "admin" &&
+            loggedUser?.role !== "instructor" && (
+              <>
+                <li className="uppercase">
+                  <NavLink to="/dashboard/selected-classes">
+                    <MdBookmarkAdded></MdBookmarkAdded>Selected Classes
+                  </NavLink>
+                </li>
+                <li className="uppercase">
+                  <NavLink to="/dashboard/enrolled-classes">
+                    <BiSelectMultiple></BiSelectMultiple>Enrolled Classes
+                  </NavLink>
+                </li>
+                <li className="uppercase">
+                  <NavLink to="/dashboard/payment-history">
+                    <MdPayments></MdPayments>Payment History
+                  </NavLink>
+                </li>
+              </>
+            )}
           <div className="h-[2px] rounded bg-[#c6ab7c] my-4"></div>
           <li className="uppercase">
             <NavLink to="/">

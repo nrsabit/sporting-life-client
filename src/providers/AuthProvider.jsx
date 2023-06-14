@@ -12,6 +12,7 @@ import {
 import { app } from "../firebase/firebase.config";
 import axios from "axios";
 
+
 export const AuthContext = createContext();
 const auth = getAuth(app);
 
