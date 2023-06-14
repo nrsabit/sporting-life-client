@@ -18,6 +18,7 @@ import EnrolledClasses from "../components/Pages/EnrolledClasses/EnrolledClasses
 import PaymentHistory from "../components/Pages/PaymentHistory/PaymentHistory";
 import Payment from "../components/Pages/Payment/Payment";
 import NotFound from "../components/Pages/NotFound/NotFound";
+import FeedbackForm from "../components/Pages/ManageClasses/FeedbackForm";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageUsers></ManageUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "feedback",
+        element: (
+          <AdminRoute>
+            <FeedbackForm></FeedbackForm>
           </AdminRoute>
         ),
       },

@@ -1,7 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const ManageClassCard = ({ classItem, refetch }) => {
   const {
@@ -45,24 +46,6 @@ const ManageClassCard = ({ classItem, refetch }) => {
     });
   };
 
-  const handleSendFeedback = () => {
-    if (feedbackRef.current.value === "") {
-      return;
-    }
-    console.log(feedbackRef.current.value);
-    axiosSecure
-      .patch(`/update-feedback/${_id}`, {
-        feedback: feedbackRef.current.value,
-      })
-      .then((data) => {
-        if (data.data.modifiedCount > 0) {
-          Swal.fire("Updated!", "Feedback Sent ", "success");
-          refetch();
-          feedbackRef.current.value = "";
-        }
-      });
-  };
-
   return (
     <motion.div
       initial={{ y: 100, rotate: -20 }}
@@ -74,33 +57,6 @@ const ManageClassCard = ({ classItem, refetch }) => {
         (status === "denied" && "bg-red-400")
       }`}
     >
-      {/* Modal Start  */}
-
-      {/* Put this part before </body> tag */}
-      <input type="checkbox" id="feedback_modal" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">
-            Send Feedback for {classItem.name}
-          </h3>
-          <textarea
-            ref={feedbackRef}
-            name="feedback"
-            className="textarea textarea-bordered w-full mt-2"
-            placeholder="Feedback"
-          ></textarea>
-          <div className="modal-action">
-            <label
-              onClick={handleSendFeedback}
-              htmlFor="feedback_modal"
-              className="btn btn-sm my-2 bg-[#213644] text-[#c6ab7c]"
-            >
-              Send
-            </label>
-          </div>
-        </div>
-      </div>
-      {/* Modal End  */}
       <div className="flex flex-col justify-center items-center md:w-1/3">
         <img className="rounded" src={image} alt="" />
         <h3 className="text-2xl font-semibold text-center">{name}</h3>
@@ -135,12 +91,11 @@ const ManageClassCard = ({ classItem, refetch }) => {
         >
           Approve
         </button>
-        <label
-          htmlFor="feedback_modal"
-          className="btn btn-sm my-2 bg-[#213644] text-[#c6ab7c]"
-        >
-          Send Feedback
-        </label>
+        <Link to="/dashboard/feedback" state={{ feedbackClass: classItem }}>
+          <button className="btn btn-sm my-2 bg-[#213644] text-[#c6ab7c]">
+            Send Feedback
+          </button>
+        </Link>
         <button
           onClick={() => handleUpdateStatus("denied")}
           disabled={status === "approved" || status === "denied"}

@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import { AiFillHome, AiFillFolderAdd } from "react-icons/ai";
 import { GiTeacher } from "react-icons/gi";
 import { SiGoogleclassroom } from "react-icons/si";
-import useAdmin from "../../../hooks/useAdmin";
-import useInstructor from "../../../hooks/useInstructor";
 import { MdManageAccounts, MdBookmarkAdded, MdPayments } from "react-icons/md";
 import { FaUsersCog } from "react-icons/fa";
 import { BiSelectMultiple } from "react-icons/bi";
-import useSingleUser from "../../../hooks/useSingleUser";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Dashboard = () => {
-  const [loggedUser] = useSingleUser();
+  const { user } = useContext(AuthContext);
+  const [loggedUser, setLoggedUser] = useState(null);
+  useEffect(() => {
+    if (user && user?.email) {
+      fetch(`https://sporting-life-server.vercel.app/user/${user?.email}`)
+        .then((res) => res.json())
+        .then((data) => setLoggedUser(data));
+    }
+  }, [user]);
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -30,7 +37,7 @@ const Dashboard = () => {
         <ul className="menu p-4 w-80 h-full bg-[#213644] text-white">
           <img className="mt-8 w-40 mb-12" src="/logo-transparent.png" alt="" />
           {/* Sidebar content here */}
-          {loggedUser?.role === "admin" && (
+          {!!user && loggedUser?.role === "admin" && (
             <>
               <li className="uppercase">
                 <NavLink to="/dashboard/manage-classes">
@@ -44,7 +51,7 @@ const Dashboard = () => {
               </li>
             </>
           )}
-          {loggedUser?.role === "instructor" && (
+          {!!user && loggedUser?.role === "instructor" && (
             <>
               <li className="uppercase">
                 <NavLink to="/dashboard/my-classes">
@@ -58,7 +65,8 @@ const Dashboard = () => {
               </li>
             </>
           )}
-          {loggedUser?.role !== "admin" &&
+          {!!user &&
+            loggedUser?.role !== "admin" &&
             loggedUser?.role !== "instructor" && (
               <>
                 <li className="uppercase">

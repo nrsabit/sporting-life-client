@@ -1,12 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
-import useSingleUser from "../../../hooks/useSingleUser";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [loggedUser] = useSingleUser();
+  const [loggedUser, setLoggedUser] = useState(null);
+  useEffect(() => {
+    if (user && user?.email) {
+      fetch(`https://sporting-life-server.vercel.app/user/${user?.email}`)
+        .then((res) => res.json())
+        .then((data) => setLoggedUser(data));
+    }
+  }, [user]);
 
   const handleLogOut = () => {
     logOut();
