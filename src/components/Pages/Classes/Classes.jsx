@@ -64,7 +64,7 @@ const Classes = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto py-16">
+    <div className="max-w-7xl mx-auto py-16 px-8">
       <Helmet>
         <title>Sporting Life | Classes</title>
       </Helmet>
@@ -73,8 +73,9 @@ const Classes = () => {
         {classes?.map((classItem) => (
           <motion.div
             initial={{ y: 100, scale: 0.8 }}
-            animate={{ y: 0, scale: 1 }}
-            transition={{ ease: "easeOut", duration: 2 }}
+            whileInView={{ y: 0, scale: 1 }}
+            viewport={{once: false}}
+            transition={{ ease: "easeOut", duration: 1 }}
             key={classItem._id}
             className={`card card-compact w-full shadow-xl ${
               classItem.availableSeats === 0 ? "bg-red-400" : "bg-base-100"
